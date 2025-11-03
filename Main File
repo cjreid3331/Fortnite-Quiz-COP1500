@@ -1,0 +1,105 @@
+# --------------------------------------------
+# Fortnite Quiz Game
+# Intro to Computer Science Project
+# Made in Python 3
+# --------------------------------------------
+
+import random
+import time
+
+# Welcome message
+print("============================================")
+print("🎮 Welcome to the Fortnite Chapter 1 Quiz! 🎮")
+print("Test your knowledge of Fortnite Seasons 1–10.")
+print("============================================")
+time.sleep(1)
+
+# Set score to 0
+score = 0
+
+# List of questions
+# Each question has: [question text, [choices], correct answer]
+questions = [
+    ["What was the name of the first Fortnite map?",
+     ["A. Apollo", "B. Athena", "C. Artemis", "D. OG Island"], "B"],
+
+    ["Which location was introduced in Season 2?",
+     ["A. Tilted Towers", "B. Salty Springs", "C. Moisty Mire", "D. Haunted Hills"], "D"],
+
+    ["Which Battle Pass skin is Tier 100 in Season 3?",
+     ["A. Omega", "B. Black Knight", "C. The Reaper", "D. Drift"], "C"],
+
+    ["What major event happened in Season 4?",
+     ["A. Meteor Strike", "B. Cube Meltdown", "C. Volcano Eruption", "D. Time Warp"], "A"],
+
+    ["Which skin evolves with XP in Season 5?",
+     ["A. Ragnarok", "B. Carbide", "C. Lynx", "D. Dire"], "A"],
+
+    ["What was the cube’s nickname in Season 5?",
+     ["A. Purple Pain", "B. Kevin", "C. Glitch", "D. Cubie"], "B"],
+
+    ["Which vehicle was added in Season 4?",
+     ["A. Baller", "B. Driftboard", "C. Shopping Cart", "D. Quadcrasher"], "C"],
+
+    ["What was the name of the volcano in Season 8?",
+     ["A. Pressure Plant", "B. Lava Lagoon", "C. Volcano Valley", "D. Molten Pit"], "A"],
+
+    ["Which event ended Chapter 1 in Season X?",
+     ["A. The End", "B. Zero Hour", "C. Black Hole", "D. Rift Storm"], "A"],
+
+    ["What skin was exclusive to the Galaxy Note 9?",
+     ["A. Sparkle Specialist", "B. Galaxy", "C. Ikonik", "D. Wonder"], "B"]
+]
+
+# Shuffle the questions so the order changes each time
+random.shuffle(questions)
+
+# Give the player instructions
+print("\nYou will be asked 10 multiple-choice questions.")
+print("Type the letter (A, B, C, or D) for your answer.")
+print("Each correct answer gives you 1 point.")
+print("Let's begin!\n")
+time.sleep(2)
+
+# Loop through each question
+for i, q in enumerate(questions, 1):
+    print("Question", i, ":", q[0])
+    print("--------------------------------------------")
+
+    # Show each possible answer
+    for option in q[1]:
+        print(option)
+
+    # Ask the player for input
+    answer = input("Your answer (A, B, C, or D): ").strip().upper()
+
+    # Check if the answer is correct
+    if answer == q[2]:
+        print("✅ Correct!\n")
+        score += 1
+    else:
+        print("❌ Wrong! The correct answer was", q[2], "\n")
+
+    # Pause briefly between questions
+    time.sleep(1)
+
+# After all questions, show final results
+print("============================================")
+print("🏁 Quiz Complete!")
+print("You got", score, "out of", len(questions), "correct.")
+print("============================================")
+
+# Give feedback based on score
+if score == 10:
+    print("🌟 Perfect! You're a true Fortnite legend!")
+elif score >= 7:
+    print("🔥 Great job! You really know your Fortnite history.")
+elif score >= 4:
+    print("👍 Not bad! Keep practicing, you’re getting there.")
+else:
+    print("😅 Looks like you need to drop back into Chapter 1 and study!")
+
+# Thank the player
+print("\nThanks for playing the Fortnite Chapter 1 Quiz!")
+print("Created by [Your Name]")
+print("============================================")
