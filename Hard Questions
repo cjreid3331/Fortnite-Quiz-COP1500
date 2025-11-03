@@ -1,0 +1,31 @@
+questions = [
+    ["Which season was the first crossover event with Marvel Comics?",
+     ["A. Season 7", "B. Season X", "C. Season 8", "D. Season 4"], "D"],
+
+    ["What was the name of the in-game TV broadcast warning players about the rocket launch?",
+     ["A. The Countdown", "B. Emergency Alert", "C. Eventcast", "D. The Broadcast"], "D"],
+
+    ["What was the name of the AI-controlled boss in Season X’s final event?",
+     ["A. The Visitor", "B. The Scientist", "C. The Devourer", "D. The Ender"], "C"],
+
+    ["What major event happened in Season 4?",
+     ["A. Meteor Strike", "B. Cube Meltdown", "C. Volcano Eruption", "D. Time Warp"], "A"],
+
+    ["Which skin evolves with XP in Season 5?",
+     ["A. Ragnarok", "B. Carbide", "C. Lynx", "D. Dire"], "A"],
+
+    ["What was the cube’s nickname in Season 5?",
+     ["A. Purple Pain", "B. Kevin", "C. Glitch", "D. Cubie"], "B"],
+
+    ["Which vehicle was added in Season 4?",
+     ["A. Baller", "B. Driftboard", "C. Shopping Cart", "D. Quadcrasher"], "C"],
+
+    ["What was the name of the volcano in Season 8?",
+     ["A. Pressure Plant", "B. Lava Lagoon", "C. Volcano Valley", "D. Molten Pit"], "A"],
+
+    ["Which event ended Chapter 1 in Season X?",
+     ["A. The End", "B. Zero Hour", "C. Black Hole", "D. Rift Storm"], "A"],
+
+    ["What skin was exclusive to the Galaxy Note 9?",
+     ["A. Sparkle Specialist", "B. Galaxy", "C. Ikonik", "D. Wonder"], "B"]
+]
