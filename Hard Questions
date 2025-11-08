@@ -8,24 +8,24 @@ questions = [
     ["What was the name of the AI-controlled boss in Season X’s final event?",
      ["A. The Visitor", "B. The Scientist", "C. The Devourer", "D. The Ender"], "C"],
 
-    ["What major event happened in Season 4?",
-     ["A. Meteor Strike", "B. Cube Meltdown", "C. Volcano Eruption", "D. Time Warp"], "A"],
+    ["Which POI (Point of Interest) was located in the northwest corner of the Chapter 1 Season 5 map?",
+     ["A. Junk Junction", "B. Snobby Shores", "C. Lazy Links", "D. Haunted Hills"], "A"],
 
-    ["Which skin evolves with XP in Season 5?",
-     ["A. Ragnarok", "B. Carbide", "C. Lynx", "D. Dire"], "A"],
+    ["Who was won the 2023 season of the Fortnite Championship Series (FNCS)?",
+     ["A. Cooper and Mero", "B. Zayt and Saf", "C. Kami and Setty", "D. Merstach and TaySon"], "A"],
 
-    ["What was the cube’s nickname in Season 5?",
-     ["A. Purple Pain", "B. Kevin", "C. Glitch", "D. Cubie"], "B"],
+    ["As of Update v30.20, over how many outfits have LEGO styles?",
+     ["A. 1200", "B. 1600", "C. 1500", "D. 1800"], "B"],
 
-    ["Which vehicle was added in Season 4?",
-     ["A. Baller", "B. Driftboard", "C. Shopping Cart", "D. Quadcrasher"], "C"],
+    ["How many pellets does the Thunder Shotgun fire?",
+     ["A. 10", "B. 12", "C. 11", "D. 13"], "C"],
 
-    ["What was the name of the volcano in Season 8?",
-     ["A. Pressure Plant", "B. Lava Lagoon", "C. Volcano Valley", "D. Molten Pit"], "A"],
+    ["Excluding the default style, how many styles does Agent Jones have?",
+     ["A. 5", "B. 6", "C. 3", "D. 4"], "A"],
 
-    ["Which event ended Chapter 1 in Season X?",
-     ["A. The End", "B. Zero Hour", "C. Black Hole", "D. Rift Storm"], "A"],
+    ["Mr.Blasty is a revolver added in Chapter 6: Mini Season 2, a crossover season with the Simpsons. Which Treehouse of Horror episode did Mr.Blasty first appear?",
+     ["A. Treehouse of Horror XIII", "B. Treehouse of Horror IV", "C. Treehouse of Horror XI", "D. Treehouse of Horror IX"], "A"],
 
-    ["What skin was exclusive to the Galaxy Note 9?",
-     ["A. Sparkle Specialist", "B. Galaxy", "C. Ikonik", "D. Wonder"], "B"]
+    ["Which POI was never on the Chapter 1 map?",
+     ["A. Moisty Mire", "B. Dirty Docks", "C. Frosty Flights", "D. Lazy Lagoon"], "B"]
 ]
