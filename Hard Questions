@@ -1,5 +1,5 @@
 questions = [
-    ["Which season was the first crossover event with Marvel Comics?",
+    ["Which season was the first crossover event with Marvel Comics? Hint: It was a Fantastic season",
      ["A. Season 7", "B. Season X", "C. Season 8", "D. Season 4"], "D"],
 
     ["What was the name of the in-game TV broadcast warning players about the rocket launch?",
