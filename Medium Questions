@@ -1,0 +1,32 @@
+#Questions (Medium)
+questions = [
+    ["What area looks like a farm?",
+     ["A. Misty Meadows", "B. Frenzy Farm", "C. Weeping Woods", "D. Sweaty Sands"], "B"],
+
+    ["What was the first vaulted weapon?",
+     ["A. Tactical SMG", "B. Silenced AR", "C. Impulse Grenades", "D. Zapatron"], "D"],
+
+    ["Which one of these areas looks like a town?",
+     ["A. Dirty Docks", "B. Steamy Stacks", "C. Retail Row", "D. Weeping Woods"], "C"],
+
+    ["Which one of these are an assault rifle?",
+     ["A. Meowsicles Peow Peow Rifle", "B. TNTINA'S BOOM bow", "C. Midas' Drum gun", "D. Brutus' Minigun"], "A"],
+
+    ["How many times can you use the mythic Grappler?",
+     ["A. Infinitely", "B. 15", "C. 100", "D. 150"], "A"],
+
+    ["Who had the first Fortnite live event?",
+     ["A. Travis Scott", "B. Marshmellow", "C. Ariana Grande", "D. Juice World"], "B"],
+
+    ["What was the theme of season 2 chapter 2?",
+     ["A. Super Heroes", "B. Water", "C. Spies", "D. Pirates"], "C"],
+
+    ["Which boss drops a mythic grappler and scar?",
+     ["A. Skye", "B. Midas", "C. Meowsicles", "D. Brutus"], "A"],
+
+    ["What place do people call Tilted Towers 2.0?",
+     ["A. The Agency", "B. Salty Springs", "C. Craggy Cliffs", "D. Pleasant Park"], "A"],
+
+    ["What was the mystery skin in chapter 2 season 2?",
+     ["A. Lebron James", "B. Deadpool", "C. Ikonik", "D. Wonder"], "B"]
+]
