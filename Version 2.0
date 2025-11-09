@@ -1,0 +1,285 @@
+# --------------------------------------------
+# Fortnite Quiz Game
+# Intro to Computer Science Project
+# Made in Python 3
+# Tayton Chisholm wrote Normal Questions and quiz framework
+# Christian Reid wrote Hard Questions and Stat Tracker
+# --------------------------------------------
+
+import random
+import time
+import csv
+from datetime import datetime
+
+# -----------------------------
+# Function Definitions
+# -----------------------------
+
+def run_quiz(questions, section_name,stats):
+    """
+    Run a quiz section and return the score.
+    """
+    score = 0
+    random.shuffle(questions)
+    
+    print(f"\n===== {section_name} Section =====\n")
+    print("Type the letter (A, B, C, or D) for your answer.")
+    print("Each correct answer gives you 1 point.\n")
+    time.sleep(1)
+
+    for i, q in enumerate(questions, 1):
+        print("Question", i, ":", q[0])
+        print("--------------------------------------------")
+        for option in q[1]:
+            print(option)
+        start_time = time.time()
+        answer = input("Your answer (A, B, C, or D): ").strip().upper()
+        elapsed = time.time() - start_time
+        
+        correct = answer == q[2]
+        if answer == q[2]:
+            print("✅ Correct!\n")
+            score += 1
+        else:
+            print("❌ Wrong! The correct answer was", q[2], "\n")
+        time.sleep(1)
+        
+        stats.append({
+        "section": section_name,
+        "question": q[0],
+        "given_answer": answer,
+        "correct_answer": q[2],
+        "correct": correct,
+        "time_taken": round(elapsed, 2)
+    })
+    print("============================================")
+    print(f"🏁 {section_name} Complete!")
+    print(f"You got {score} out of {len(questions)} correct.")
+    print("============================================\n")
+    
+    return score
+
+def give_feedback(score):
+    if score == 10:
+        print("🌟 Perfect! You're a true Fortnite legend!")
+    elif score >= 7:
+        print("🔥 Great job! You really know your Fortnite history.")
+    elif score >= 4:
+        print("👍 Not bad! Keep practicing, you’re getting there.")
+    else:
+        print("😅 Looks like you need to drop back into Chapter 1 and study!")
+        
+
+def display_summary_chart(stats, filename="summary_chart.png"):
+    import matplotlib
+    matplotlib.use('Agg')  # Always safe for saving
+    import matplotlib.pyplot as plt
+    import os
+
+    if not stats:
+        print("⚠️ No stats available to chart.")
+        return
+
+    sections = sorted(set(s["section"] for s in stats))
+    correct_counts, incorrect_counts, avg_times = [], [], []
+
+    for sec in sections:
+        sec_stats = [s for s in stats if s["section"] == sec]
+        correct = sum(1 for s in sec_stats if s["correct"])
+        incorrect = len(sec_stats) - correct
+        avg_time = round(sum(s["time_taken"] for s in sec_stats) / len(sec_stats), 2)
+        correct_counts.append(correct)
+        incorrect_counts.append(incorrect)
+        avg_times.append(avg_time)
+
+    fig, ax1 = plt.subplots(figsize=(10, 6))
+    x = range(len(sections))
+    ax1.bar(x, correct_counts, color='green', label='Correct')
+    ax1.bar(x, incorrect_counts, bottom=correct_counts, color='red', label='Incorrect')
+    ax1.set_xticks(x)
+    ax1.set_xticklabels(sections)
+    ax1.set_ylabel('Number of Questions')
+    ax1.set_title('Quiz Performance Summary')
+
+    ax2 = ax1.twinx()
+    ax2.plot(x, avg_times, color='blue', marker='o', label='Avg Time (s)')
+    ax2.set_ylabel('Average Time per Question (s)')
+
+    handles1, labels1 = ax1.get_legend_handles_labels()
+    handles2, labels2 = ax2.get_legend_handles_labels()
+    ax1.legend(handles1 + handles2, labels1 + labels2, loc='upper left')
+
+    plt.tight_layout()
+    filepath = os.path.abspath(filename)
+    plt.savefig(filepath)
+    plt.close(fig)
+    print(f"✅ Summary chart saved as {filepath}")
+
+
+def save_stats_to_csv(stats, filename="quiz_history.csv"):
+    """
+    Save quiz stats to a CSV file for history tracking.
+    """
+    fieldnames = ["timestamp", "section", "question", "given_answer", "correct_answer", "correct", "time_taken"]
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    try:
+        with open(filename, 'a', newline='', encoding='utf-8') as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            # Write header if file is empty
+            if f.tell() == 0:
+                writer.writeheader()
+            for stat in stats:
+                row = {"timestamp": timestamp, **stat}
+                writer.writerow(row)
+        print(f"📄 Quiz results saved to {filename}")
+    except Exception as e:
+        print("❌ Error saving stats:", e)
+
+# -----------------------------
+# Question Banks
+# -----------------------------
+
+# Normal Questions written by Tayton Chisholm
+norm_questions = [
+    ["What was the name of the first Fortnite map?",
+     
+     ["A. Apollo", "B. Athena", "C. Artemis", "D. OG Island"], "B"],
+    
+    ["Which location was introduced in Season 2?",
+     ["A. Tilted Towers", "B. Salty Springs", "C. Moisty Mire", "D. Haunted Hills"], "D"],
+    
+    ["Which Battle Pass skin is Tier 100 in Season 3?",
+     ["A. Omega", "B. Black Knight", "C. The Reaper", "D. Drift"], "C"],
+    
+    ["What major event happened in Season 4?",
+     ["A. Meteor Strike", "B. Cube Meltdown", "C. Volcano Eruption", "D. Time Warp"], "A"],
+    
+    ["Which skin evolves with XP in Season 5?",
+     ["A. Ragnarok", "B. Carbide", "C. Lynx", "D. Dire"], "A"],
+    
+    ["What was the cube’s nickname in Season 5?",
+     ["A. Purple Pain", "B. Kevin", "C. Glitch", "D. Cubie"], "B"],
+    
+    ["Which vehicle was added in Season 4?",
+     ["A. Baller", "B. Driftboard", "C. Shopping Cart", "D. Quadcrasher"], "C"],
+    
+    ["What was the name of the volcano in Season 8?",
+     ["A. Pressure Plant", "B. Lava Lagoon", "C. Volcano Valley", "D. Molten Pit"], "A"],
+    
+    ["Which event ended Chapter 1 in Season X?",
+     ["A. The End", "B. Zero Hour", "C. Black Hole", "D. Rift Storm"], "A"],
+    
+    ["What skin was exclusive to the Galaxy Note 9?",
+     ["A. Sparkle Specialist", "B. Galaxy", "C. Ikonik", "D. Wonder"], "B"]
+]
+
+# Advanced Questions written by Antony Lamour
+advanced_questions = [
+    ["What area looks like a farm?",
+     ["A. Misty Meadows", "B. Frenzy Farm", "C. Weeping Woods", "D. Sweaty Sands"], "B"],
+    
+    ["What was the first vaulted weapon?",
+     ["A. Tactical SMG", "B. Silenced AR", "C. Impulse Grenades", "D. Zapatron"], "D"],
+
+    ["Which one of these areas looks like a town?",
+     ["A. Dirty Docks", "B. Steamy Stacks", "C. Retail Row", "D. Weeping Woods"], "C"],
+
+    ["Which one of these are an assault rifle?",
+     ["A. Meowsicles Peow Peow Rifle", "B. TNTINA'S BOOM bow", "C. Midas' Drum gun", "D. Brutus' Minigun"], "A"],
+
+    ["How many times can you use the mythic Grappler?",
+     ["A. Infinitely", "B. 15", "C. 100", "D. 150"], "A"],
+
+    ["Who had the first Fortnite live event?",
+     ["A. Travis Scott", "B. Marshmellow", "C. Ariana Grande", "D. Juice World"], "B"],
+
+    ["What was the theme of season 2 chapter 2?",
+     ["A. Super Heroes", "B. Water", "C. Spies", "D. Pirates"], "C"],
+
+    ["Which boss drops a mythic grappler and scar?",
+     ["A. Skye", "B. Midas", "C. Meowsicles", "D. Brutus"], "A"],
+
+    ["What place do people call Tilted Towers 2.0?",
+     ["A. The Agency", "B. Salty Springs", "C. Craggy Cliffs", "D. Pleasant Park"], "A"],
+
+    ["What was the mystery skin in chapter 2 season 2?",
+     ["A. Lebron James", "B. Deadpool", "C. Ikonik", "D. Wonder"], "B"]
+]
+
+# Hard Questions written by Christian Reid
+hard_questions = [
+    ["Which season was the first crossover event with Marvel Comics? Hint: It was a Fantastic season",
+     ["A. Season 7", "B. Season X", "C. Season 8", "D. Season 4"], "D"],
+
+    ["What was the name of the in-game TV broadcast warning players about the rocket launch?",
+     ["A. The Countdown", "B. Emergency Alert", "C. Eventcast", "D. The Broadcast"], "D"],
+
+    ["What was the name of the AI-controlled boss in Season X’s final event?",
+     ["A. The Visitor", "B. The Scientist", "C. The Devourer", "D. The Ender"], "C"],
+
+    ["Which POI (Point of Interest) was located in the northwest corner of the Chapter 1 Season 5 map?",
+     ["A. Junk Junction", "B. Snobby Shores", "C. Lazy Links", "D. Haunted Hills"], "A"],
+
+    ["Who won the 2023 season of the Fortnite Championship Series (FNCS)?",
+     ["A. Cooper and Mero", "B. Zayt and Saf", "C. Kami and Setty", "D. Merstach and TaySon"], "A"],
+
+    ["As of Update v30.20, over how many outfits have LEGO styles?",
+     ["A. 1200", "B. 1600", "C. 1500", "D. 1800"], "B"],
+
+    ["How many pellets does the Thunder Shotgun fire?",
+     ["A. 10", "B. 12", "C. 11", "D. 13"], "C"],
+
+    ["Excluding the default style, how many styles does Agent Jones have?",
+     ["A. 5", "B. 6", "C. 3", "D. 4"], "A"],
+
+    ["Mr.Blasty is a revolver added in Chapter 6: Mini Season 2, a crossover season with the Simpsons. Which Treehouse of Horror episode did Mr.Blasty first appear?",
+     ["A. Treehouse of Horror XIII", "B. Treehouse of Horror IV", "C. Treehouse of Horror XI", "D. Treehouse of Horror IX"], "A"],
+
+    ["Which POI was never on the Chapter 1 map?",
+     ["A. Moisty Mire", "B. Dirty Docks", "C. Frosty Flights", "D. Lazy Lagoon"], "B"]
+]
+
+# -----------------------------
+# Game Start
+# -----------------------------
+
+stats=[]
+
+print("============================================")
+print("🎮 Welcome to the Fortnite Quiz! 🎮")
+print("Test your knowledge of the game that took over the world.")
+print("============================================")
+time.sleep(1)
+
+# Run Normal Section
+norm_score = run_quiz(norm_questions, "Normal",stats)
+give_feedback(norm_score)
+
+if norm_score >= 7:
+    print("\n🎯 You've unlocked the Advanced Section! 🎯")
+    time.sleep(2)
+    
+    # Run Advanced Section
+    advanced_score = run_quiz(advanced_questions, "Advanced",stats)
+    give_feedback(advanced_score)
+    
+    if advanced_score >= 7:
+        print("\n💀 You've unlocked the Hard Section! 💀")
+        time.sleep(2)
+        
+        # Run Hard Section
+        hard_score = run_quiz(hard_questions, "Hard",stats)
+        give_feedback(hard_score)
+    else:
+        print("\n😅 You didn't score enough to unlock Hard Section. Try again!")
+else:
+    print("\n😅 You didn't score enough to unlock Advanced Section. Try again!")
+
+display_summary_chart(stats)
+save_stats_to_csv(stats)
+
+# Thank the player
+print("\nThanks for playing the Fortnite Quiz!")
+print("Created by Tayton Chisholm, Antony Lamour, and Christian Reid")
+print("============================================")
