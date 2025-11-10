@@ -4,6 +4,7 @@
 # Made in Python 3
 # Tayton Chisholm wrote Normal Questions and quiz framework
 # Christian Reid wrote Hard Questions and Stat Tracker
+# Antony Lamour wrote Advanced Questions and Bonus Rounds
 # --------------------------------------------
 
 import random
