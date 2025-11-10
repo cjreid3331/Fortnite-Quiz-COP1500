@@ -208,7 +208,8 @@ advanced_questions = [
 ]
 
 # Hard Questions written by Christian Reid
-hard_questions = [
+hard_questions = [   
+
     ["Which season was the first crossover event with Marvel Comics? Hint: It was a Fantastic season",
      ["A. Season 7", "B. Season X", "C. Season 8", "D. Season 4"], "D"],
 
@@ -239,12 +240,40 @@ hard_questions = [
     ["Which POI was never on the Chapter 1 map?",
      ["A. Moisty Mire", "B. Dirty Docks", "C. Frosty Flights", "D. Lazy Lagoon"], "B"]
 ]
+# -----------------------------
+# Bonus Rounds written by Antony Lamour
+# -----------------------------
+normal_bonus = [
+    ["What color rarity comes after Rare?", 
+     ["A. Uncommon", "B. Epic", "C. Legendary", "D. Mythic"], "B"],
+    ["Which mode is NOT in Fortnite?", 
+     ["A. Battle Royale", "B. Creative", "C. Story Mode", "D. Save the World"], "C"],
+    ["What type of storm closes in during the match?", 
+     ["A. Ice Storm", "B. Energy Storm", "C. Fire Storm", "D. The Storm"], "D"]
+]
 
+advanced_bonus = [
+    ["Which weapon is known for bouncing explosives?", 
+     ["A. Boogie Bomb", "B. Proximity Grenade Launcher", "C. Grenade", "D. Rocket Launcher"], "B"],
+    ["Who led The Seven in Chapter 3?", 
+     ["A. The Scientist", "B. The Visitor", "C. The Foundation", "D. The Paradigm"], "C"],
+    ["What item lets you redeploy mid-air?", 
+     ["A. Grappler", "B. Jetpack", "C. Glider Re-deploy", "D. Launch Pad"], "C"]
+]
+
+hard_bonus = [
+    ["What year was Fortnite *officially* released?", 
+     ["A. 2015", "B. 2016", "C. 2017", "D. 2018"], "C"],
+    ["Which POI returned multiple times with variations?", 
+     ["A. Tilted Towers", "B. Salty Springs", "C. Greasy Grove", "D. Dusty Depot"], "A"],
+    ["Which in-game organization created the IO?", 
+     ["A. The Seven", "B. Ghost", "C. Shadow", "D. Imagined Order"], "D"]
+]
 # -----------------------------
 # Game Start
 # -----------------------------
 
-stats=[]
+stats = []
 
 print("============================================")
 print("🎮 Welcome to the Fortnite Quiz! 🎮")
@@ -253,29 +282,56 @@ print("============================================")
 time.sleep(1)
 
 # Run Normal Section
-norm_score = run_quiz(norm_questions, "Normal",stats)
+norm_score = run_quiz(norm_questions, "Normal", stats)
 give_feedback(norm_score)
 
+# --- Normal Bonus Round ---
+if norm_score == len(norm_questions):  # Perfect score on Normal
+    print("\n🎁 BONUS ROUND UNLOCKED! 🎁")
+    time.sleep(1)
+    bonus_score = run_quiz(normal_bonus, "Normal Bonus", stats)
+    give_feedback(bonus_score)
+
+# --- Unlock Advanced Section ---
 if norm_score >= 7:
     print("\n🎯 You've unlocked the Advanced Section! 🎯")
     time.sleep(2)
-    
+
     # Run Advanced Section
-    advanced_score = run_quiz(advanced_questions, "Advanced",stats)
+    advanced_score = run_quiz(advanced_questions, "Advanced", stats)
     give_feedback(advanced_score)
-    
+
+    # --- Advanced Bonus Round ---
+    if advanced_score == len(advanced_questions):  # Perfect score on Advanced
+        print("\n🎯 ADVANCED BONUS ROUND UNLOCKED! 🎯")
+        time.sleep(1)
+        bonus_score = run_quiz(advanced_bonus, "Advanced Bonus", stats)
+        give_feedback(bonus_score)
+
+    # --- Unlock Hard Section ---
     if advanced_score >= 7:
         print("\n💀 You've unlocked the Hard Section! 💀")
         time.sleep(2)
-        
+
         # Run Hard Section
-        hard_score = run_quiz(hard_questions, "Hard",stats)
+        hard_score = run_quiz(hard_questions, "Hard", stats)
         give_feedback(hard_score)
+
+        # --- Hard Bonus Round ---
+        if hard_score == len(hard_questions):  # Perfect score on Hard
+            print("\n💀 HARD BONUS ROUND UNLOCKED! 💀")
+            time.sleep(1)
+            bonus_score = run_quiz(hard_bonus, "Hard Bonus", stats)
+            give_feedback(bonus_score)
+        else:
+            print("\n😅 You didn't score enough to unlock the Hard Bonus Round. Try again!")
     else:
         print("\n😅 You didn't score enough to unlock Hard Section. Try again!")
+
 else:
     print("\n😅 You didn't score enough to unlock Advanced Section. Try again!")
 
+# --- These stay outside of all the if/else blocks ---
 display_summary_chart(stats)
 save_stats_to_csv(stats)
 
