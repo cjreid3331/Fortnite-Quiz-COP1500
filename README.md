@@ -20,10 +20,15 @@ Features:
 Requirements
 1. Python 3.6 or higher
 2. Libraries:
+
 matplotlib (for generating performance charts)
+
 csv (for saving quiz statistics)
+
 datetime (for timestamping)
+
 Optional: terminal or console for running Python scripts
+
 3. Install matplotlib if not already installed: pip install matplotlib
 
 How to Run
