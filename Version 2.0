@@ -70,7 +70,7 @@ def give_feedback(score, total):
     elif ratio >= 0.4:
         print("👍 Not bad! Keep practicing, you’re getting there.")
     else:
-        print("😅 Looks like you need to drop back into Chapter 1 and study!")
+        print("😅 Looks like you need to drop back in and study!")
 
         
 
