@@ -3,7 +3,7 @@ Project: Intro to Computer Science
 Language: Python 3
 Authors: Tayton Chisholm, Christian Reid, Antony Lamour
 
-Overview
+Overview:
 The Fortnite Quiz Game is an interactive Python quiz designed to test players’ knowledge of Fortnite across multiple difficulty levels. It includes Normal, Advanced, and Hard sections, each with a chance to unlock bonus rounds for perfect scores. The game tracks performance, measures response times, and generates a summary chart of your results.
 
 Features:
@@ -32,25 +32,24 @@ How to Run
 6. After completing the quiz, a summary chart is saved as summary_chart.png and stats as quiz_history.csv.
 
 Gameplay Structure
-Normal Section – The first set of questions; achieving a perfect score unlocks the Normal Bonus Round.
-Advanced Section – Unlocks if the player scores 7 or higher on the Normal section.
-Hard Section – Unlocks if the player scores 7 or higher on the Advanced section.
-Bonus Rounds – Special rounds with extra questions for perfect scores.
-Feedback and scoring are provided after each section.
+1. Normal Section – The first set of questions; achieving a perfect score unlocks the Normal Bonus Round.
+2. Advanced Section – Unlocks if the player scores 7 or higher on the Normal section.
+3. Hard Section – Unlocks if the player scores 7 or higher on the Advanced section.
+4. Bonus Rounds – Special rounds with extra questions for perfect scores.
+5. Feedback and scoring are provided after each section.
 
 File Descriptions
-fortnite_quiz.py – Main Python script containing game logic, questions, and tracking features.
-quiz_history.csv – Automatically generated CSV file storing each quiz session with timestamp, question, answer, and response time.
-summary_chart.png – Generated chart showing correct vs. incorrect answers and average time per section.
+a. fortnite_quiz.py – Main Python script containing game logic, questions, and tracking features.
+b. quiz_history.csv – Automatically generated CSV file storing each quiz session with timestamp, question, answer, and response time.
+c. summary_chart.png – Generated chart showing correct vs. incorrect answers and average time per section.
 
 Customisation
-Add or edit questions in the norm_questions, advanced_questions, hard_questions, and bonus rounds lists.
-Adjust the scoring and unlock thresholds by modifying the conditional statements in the main game loop.
+a. Add or edit questions in the norm_questions, advanced_questions, hard_questions, and bonus rounds lists.
+b. Adjust the scoring and unlock thresholds by modifying the conditional statements in the main game loop.
 
 Acknowledgements
-Tayton Chisholm – Normal questions & quiz framework
-Christian Reid – Hard questions & statistics tracker
-Antony Lamour – Advanced questions & bonus rounds
+a. Tayton Chisholm – Normal questions & quiz framework
+b. Christian Reid – Hard questions & statistics tracker
+c. Antony Lamour – Advanced questions & bonus rounds
 
-License
 This project is for educational purposes and is not intended for commercial use.
